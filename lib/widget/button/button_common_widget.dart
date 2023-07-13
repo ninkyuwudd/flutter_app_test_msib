@@ -2,10 +2,16 @@ import 'package:flutter/material.dart';
 
 
 
-class ButtonCommonWidget extends StatelessWidget {
+class ButtonCommonWidget extends StatefulWidget {
+  final Function() fungsi;
   final String text;
-  const ButtonCommonWidget({super.key, required this.text});
+  const ButtonCommonWidget({super.key, required this.text, required this.fungsi});
 
+  @override
+  State<ButtonCommonWidget> createState() => _ButtonCommonWidgetState();
+}
+
+class _ButtonCommonWidgetState extends State<ButtonCommonWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,8 +26,10 @@ class ButtonCommonWidget extends StatelessWidget {
       ),
     ),
   ),
-        onPressed: (){}, 
-        child: Text(text)
+        onPressed: (){
+          widget.fungsi();
+        }, 
+        child: Text(widget.text)
         ),
     );
   }
